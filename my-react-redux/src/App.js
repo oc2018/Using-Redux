@@ -1,14 +1,18 @@
-//import logo from './logo.svg';
-//import './App.css';
-import React from "react";
-import Muffin from "./Muffins/Muffin"
-import Muffins from "./Muffins/Muffins";
+import React, {useEffect} from "react";
+import Muffins from "./components/Muffins/Muffins"
+import {useDispatch} from 'react-redux';
+import {getMuffins} from './actions/muffins'
 
-function App() {
-    const muffins = Muffins.map((item) => <Muffin key={item.id} muffin ={item}/>);
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMuffins())
+  }, [dispatch]);
+    
   return (
         <div>
-            {muffins}
+            <Muffins />
         </div>
     
   );
